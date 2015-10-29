@@ -42,9 +42,9 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
-				<integer>116</integer>
+				<integer>0</integer>
 				<key>keyword</key>
 				<string>tbl</string>
 				<key>queuedelaycustom</key>
@@ -56,13 +56,13 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>script</key>
-				<string>python md.py </string>
+				<string>python md.py '{query}'</string>
 				<key>title</key>
 				<string>Type a number or sequence</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
