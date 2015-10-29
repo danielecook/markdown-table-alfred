@@ -29,16 +29,19 @@ def main(wf):
     except:
         cb = [x.split("\t")  for x in re.sub(" +","\t", cb).split("\n")]
 
-    # Header
-    cb_grid_header = tabulate(cb,  headers="firstrow", tablefmt="pipe")
-    cb_grid_header_prev = "L1: " + cb_grid_header.split("\n")[0] + ";L2: " + cb_grid_header.split("\n")[2]
-    wf.add_item("Header", cb_grid_header_prev, arg=cb_grid_header, valid=True)
-  
-    # No header
-    cb_grid = tabulate(cb, tablefmt="pipe")
-    cb_grid_prev = cb_grid.split("\n")[1]
+    try:
+        # Header
+        cb_grid_header = tabulate(cb,  headers="firstrow", tablefmt="pipe")
+        cb_grid_header_prev = "L1: " + cb_grid_header.split("\n")[0] + ";L2: " + cb_grid_header.split("\n")[2]
+        wf.add_item("Header", cb_grid_header_prev, arg=cb_grid_header, valid=True)
+      
+        # No header
+        cb_grid = tabulate(cb, tablefmt="pipe")
+        cb_grid_prev = cb_grid.split("\n")[1]
 
-    wf.add_item("No Header", cb_grid_prev, arg=cb_grid, valid=True)
+        wf.add_item("No Header", cb_grid_prev, arg=cb_grid, valid=True)
+    except:
+        wf.add_item("Error", "Unable to parse table", icon = "error.png")
 
     
     # Send output to Alfred
